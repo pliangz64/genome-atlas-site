@@ -1,0 +1,22 @@
+{
+  "_comment": "Add one entry per microbiome, then rerun analysis.py and build_site.py. The site builds every single-microbiome view and every pairwise comparison automatically. See README.md > Adding a microbiome.",
+  "eggnog_features_dir": "C:/Users/phill/Desktop/Dong Lab/Random Forest/features",
+  "microbiomes": [
+    {
+      "id": "gut",
+      "name": "Gut",
+      "catalogue": "UHGG v2.0.2 species-representative genomes",
+      "citation": "Almeida A, et al. A unified catalog of 204,938 reference genomes from the human gut microbiome. Nat Biotechnol 39:105-114 (2021).",
+      "embeddings": "C:/Users/phill/Desktop/Dong Lab/Interactive UMAP and Website Github/UHGG_dnabert_s_embeddings.csv",
+      "color_slot": 1
+    },
+    {
+      "id": "vaginal",
+      "name": "Vaginal",
+      "catalogue": "VMGC species-level genome bins",
+      "citation": "Huang L, et al. A multi-kingdom collection of 33,804 reference genomes for the human vaginal microbiome. Nat Microbiol 9:2185-2200 (2024). doi:10.1038/s41564-024-01751-5",
+      "embeddings": "C:/Users/phill/Desktop/Dong Lab/Interactive UMAP and Website Github/vmgc_genome_embeddings.csv",
+      "color_slot": 2
+    }
+  ]
+}

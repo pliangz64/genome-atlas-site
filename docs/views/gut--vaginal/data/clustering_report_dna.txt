@@ -1,0 +1,20 @@
+5530 genomes
+  Gut: 85.8%
+  Vaginal: 14.2% (minority, drawn on top)
+Main result (seed 42): 7 clusters, 6.1% outliers
+Stability: Clusters were mostly consistent across random runs; boundaries may shift slightly.
+  5 runs gave 6-8 clusters; agreement (Adjusted Rand Index, genomes clustered in both runs) mean 0.87, lowest 0.73
+  On average 91% of genomes were clustered in both runs of a pair.
+  Verdict cutoffs (0.9 / 0.75) are rule-of-thumb guides chosen for this tool.
+
+Genomes per cluster:
+Dataset    Gut  Vaginal
+Cluster                
+Outliers   233      104
+0          565        1
+1          155      134
+2          287       90
+3          441      139
+4         2126      153
+5          295       82
+6          642       83

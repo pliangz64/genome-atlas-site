@@ -1,0 +1,13 @@
+{
+  "n_genomes": 786,
+  "n_ogs_filtered": 7362,
+  "min_prevalence_tested": 0.01,
+  "min_genomes_tested": 5,
+  "functional_metric": "braycurtis",
+  "min_cluster_prevalence": 0.1,
+  "alpha": 0.05,
+  "min_samples_dna": 5,
+  "min_samples_functional": 10,
+  "dna_vs_functional_ari": 0.2738567472920716,
+  "dna_vs_functional_share": 0.8638676844783715
+}

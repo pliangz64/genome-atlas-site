@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · Human Microbiome Genome Atlas</title>
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Human Microbiome Genome Atlas</a>
+  <nav class="main" aria-label="Main"><a href="index.html" aria-current="page">Home</a><a href="methods.html">Methods</a><a href="downloads.html">Downloads</a></nav>
+</div></header>
+<main><div class="wrap">
+
+<h1>Human Microbiome Genome Atlas</h1>
+<p class="lede">Compare bacterial genomes from different human body sites. Each view shows the genomes on two maps: one
+by DNA sequence (DNABERT-S embeddings) and one by gene content (relative abundance of eggNOG gene families), each with its
+own clusters. Pick one microbiome to explore it on its own, or two to compare them.</p>
+<div class="selector">
+<form class="pick" data-order='["gut", "vaginal"]' data-root="">
+  <span class="label">Microbiomes</span><label class="chip"><input type="checkbox" value="gut"><span class="swatch" style="background:var(--m-gut)"></span>Gut</label><label class="chip"><input type="checkbox" value="vaginal"><span class="swatch" style="background:var(--m-vaginal)"></span>Vaginal</label>
+  <button type="submit">Show</button>
+  <span class="hint"></span>
+</form></div>
+<h2>Microbiomes</h2>
+<div class="cards"><a class="card" href="views/gut/index.html"><h3><span class="swatch" style="background:var(--m-gut)"></span>Gut</h3><span class="small muted">4,744 genomes · UHGG v2.0.2 species-representative genomes</span></a><a class="card" href="views/vaginal/index.html"><h3><span class="swatch" style="background:var(--m-vaginal)"></span>Vaginal</h3><span class="small muted">786 genomes · VMGC species-level genome bins</span></a></div>
+<h2>Comparisons</h2>
+<div class="cards"><a class="card" href="views/gut--vaginal/index.html"><h3>Gut vs Vaginal</h3><span class="small muted">5,530 genomes · DNA and functional maps, differences</span></a></div>
+<p class="small muted" style="margin-top:20px">2 microbiomes · 3 views. More microbiomes will be
+added over time.</p>
+
+</div></main>
+<footer><div class="wrap">Early prototype · generated 23 September 2026</div></footer>
+<script src="assets/selector.js"></script>
+</body>
+</html>

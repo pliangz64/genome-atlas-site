@@ -1,0 +1,21 @@
+4744 genomes
+  Gut: 100.0%
+Main result (seed 42): 9 clusters, 6.8% outliers
+Stability: Clusters were mostly consistent across random runs; boundaries may shift slightly.
+  5 runs gave 7-9 clusters; agreement (Adjusted Rand Index, genomes clustered in both runs) mean 0.77, lowest 0.56
+  On average 86% of genomes were clustered in both runs of a pair.
+  Verdict cutoffs (0.9 / 0.75) are rule-of-thumb guides chosen for this tool.
+
+Genomes per cluster:
+Dataset    Gut
+Cluster       
+Outliers   322
+0          327
+1          629
+2          320
+3          301
+4          365
+5          375
+6          349
+7          483
+8         1273

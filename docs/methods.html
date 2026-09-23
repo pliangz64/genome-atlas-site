@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methods · Human Microbiome Genome Atlas</title>
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">Human Microbiome Genome Atlas</a>
+  <nav class="main" aria-label="Main"><a href="index.html">Home</a><a href="methods.html" aria-current="page">Methods</a><a href="downloads.html">Downloads</a></nav>
+</div></header>
+<main><div class="wrap">
+
+<h1>Methods</h1>
+<h2>Genomes</h2>
+<div class="table-wrap"><table><thead><tr><th>Microbiome</th><th>Genome collection</th><th>Reference</th></tr></thead>
+<tbody><tr><td><span class="swatch" style="background:var(--m-gut)"></span>Gut</td><td>UHGG v2.0.2 species-representative genomes</td><td>Almeida A, et al. A unified catalog of 204,938 reference genomes from the human gut microbiome. Nat Biotechnol 39:105-114 (2021).</td></tr><tr><td><span class="swatch" style="background:var(--m-vaginal)"></span>Vaginal</td><td>VMGC species-level genome bins</td><td>Huang L, et al. A multi-kingdom collection of 33,804 reference genomes for the human vaginal microbiome. Nat Microbiol 9:2185-2200 (2024). doi:10.1038/s41564-024-01751-5</td></tr></tbody></table></div>
+<p>Each genome represents one species-level group from its collection, not one sample.</p>
+<h2>Views</h2>
+<p>The site offers every microbiome on its own and every pair of microbiomes. Each view is computed separately, so a
+single microbiome's clusters reflect its own structure, and map positions and cluster numbers are not comparable
+between views.</p>
+<h2>Gene families and relative abundance</h2>
+<p>Genes were annotated with eggNOG-mapper and assigned to their root-level eggNOG orthologous group (OG). The relative
+abundance of an OG in a genome is the number of its genes in that OG divided by the genome's total annotated genes,
+which removes the effect of genome size. In each view, only OGs present in at least 1% of
+the view's genomes (and at least 5 genomes) are used.</p>
+<h2>The two maps</h2>
+<p>Each view has two maps, both made with UMAP (n_neighbors = 30, min_dist = 0.1, seed 42) and clustered on the 2-D map
+with HDBSCAN (min_cluster_size = 5% of the view's genomes). Genomes in sparse regions are not assigned to a cluster and
+are shown as outliers.</p>
+<ul>
+<li><strong>DNA-embedding map:</strong> genome embeddings from the DNA language model DNABERT-S, Euclidean distance,
+HDBSCAN min_samples = 5. It reflects similarity of DNA sequence composition and is not a
+phylogeny.</li>
+<li><strong>Functional map:</strong> each genome's relative-abundance profile across the filtered OGs,
+Bray–Curtis dissimilarity, HDBSCAN min_samples =
+10.</li>
+</ul>
+<p>The min_samples values were chosen by sweeping the setting and checking cluster stability across random seeds. On the
+DNA-embedding maps, values of 15 or more sometimes merged most genomes into one or two clusters; the functional maps were
+most stable at around 10.</p>
+<p>Stability was checked by repeating UMAP + HDBSCAN with five random seeds and comparing runs with the Adjusted Rand
+Index (ARI) on genomes clustered in both runs. The verdict cut-offs (≥ 0.9 consistent, 0.75–0.9 mostly consistent) are
+rule-of-thumb guides, not an established standard. Agreement between the DNA-embedding and functional clusters is also
+reported as an ARI, on genomes clustered on both maps.</p>
+<h2>Top COG families per functional cluster</h2>
+<p>Among OGs that are COG groups, each functional cluster's families were ranked by log2 fold enrichment: mean relative
+abundance in the cluster divided by the mean across all other clustered genomes in the view (pseudocount
+10<sup>−6</sup>). Only COGs present in at least 10% of the cluster's genomes were ranked.
+The top 10 are shown. This is descriptive; no per-cluster test is applied.</p>
+<h2>Comparing two microbiomes</h2>
+<p>For each OG, relative abundance in the two microbiomes was compared with a two-sided Mann-Whitney U test, and p-values
+were corrected across all tested OGs with the Benjamini–Hochberg false discovery rate. Effect size is the rank-biserial
+correlation. The site highlights OGs with q &lt; 0.05 and |effect| ≥ 0.3.</p>
+<h2>Limitations</h2>
+<ul>
+<li>Genomes share evolutionary history, so they are not fully independent observations. Results describe differences
+between genome collections, not causal effects of the body site.</li>
+<li>Relative abundance is compositional: an increase in one family's share lowers the others'.</li>
+<li>Differences between microbiomes can partly reflect how each collection was built (isolates vs metagenome-assembled
+genomes, completeness, annotation depth).</li>
+<li>UMAP and HDBSCAN results depend on random seeds and settings; each view reports its own stability.</li>
+</ul>
+<h2>Software and method references</h2>
+<ul class="small">
+<li>Zhou Z, et al. DNABERT-S: Pioneering species differentiation with species-aware DNA embeddings. arXiv:2402.08777 (2024).</li>
+<li>Cantalapiedra CP, et al. eggNOG-mapper v2. <em>Mol Biol Evol</em> 38:5825–5829 (2021).</li>
+<li>Huerta-Cepas J, et al. eggNOG 5.0. <em>Nucleic Acids Res</em> 47:D309–D314 (2019).</li>
+<li>McInnes L, Healy J, Melville J. UMAP. arXiv:1802.03426 (2018).</li>
+<li>Campello RJGB, Moulavi D, Sander J. Density-based clustering based on hierarchical density estimates. PAKDD (2013).</li>
+<li>Benjamini Y, Hochberg Y. Controlling the false discovery rate. <em>J R Stat Soc B</em> 57:289–300 (1995).</li>
+</ul>
+
+</div></main>
+<footer><div class="wrap">Early prototype · generated 23 September 2026</div></footer>
+<script src="assets/selector.js"></script>
+</body>
+</html>

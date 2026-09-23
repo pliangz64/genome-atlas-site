@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gut · Human Microbiome Genome Atlas</title>
+<link rel="stylesheet" href="../../assets/style.css">
+
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="../../index.html">Human Microbiome Genome Atlas</a>
+  <nav class="main" aria-label="Main"><a href="../../index.html">Home</a><a href="../../methods.html">Methods</a><a href="../../downloads.html">Downloads</a></nav>
+</div></header>
+<main><div class="wrap">
+
+<div class="selector">
+<form class="pick" data-order='["gut", "vaginal"]' data-root="../../">
+  <span class="label">Microbiomes</span><label class="chip"><input type="checkbox" value="gut" checked><span class="swatch" style="background:var(--m-gut)"></span>Gut</label><label class="chip"><input type="checkbox" value="vaginal"><span class="swatch" style="background:var(--m-vaginal)"></span>Vaginal</label>
+  <button type="submit">Show</button>
+  <span class="hint"></span>
+</form></div>
+<h1>Gut</h1>
+<p class="lede">Gut genomes (UHGG v2.0.2 species-representative genomes) shown two ways: by their DNA sequence (DNABERT-S embeddings) and by their gene content (eggNOG gene families), each with its own clusters.</p>
+<div class="tiles">
+  <div class="tile"><div class="v">4,744</div><div class="k"><span class="swatch" style="background:var(--m-gut)"></span>Gut genomes</div></div>
+  <div class="tile"><div class="v">6</div><div class="k">DNA-embedding clusters</div></div>
+  <div class="tile"><div class="v">9</div><div class="k">Functional clusters</div></div>
+</div>
+<nav class="subnav" aria-label="On this page"><a href="#dna">DNA-embedding map</a><a href="#functional">Functional map and COG families</a></nav>
+
+<h2 id="dna">DNA-embedding map (DNABERT-S)</h2>
+<p>Genomes are placed by DNABERT-S embeddings of their DNA sequence, so genomes with similar sequence composition sit
+close together. Treat it as a visual impression of genetic similarity, not a measure of evolutionary distance.</p>
+
+<div class="tabs" role="tablist" aria-label="Colour the map by" data-frame="frame-dna"><button role="tab" aria-selected="true" data-src="maps/dna_cluster.html">Colour by cluster</button><button role="tab" aria-selected="false" data-src="maps/dna_other.html">Colour by functional cluster</button></div>
+<iframe class="map" id="frame-dna" src="maps/dna_cluster.html" title="Interactive dna map" loading="lazy"></iframe>
+<p class="small muted">Hover a point for its details. Click a legend entry to hide it; double-click to show only that
+entry (double-click again to show all). Drag to zoom; double-click the plot to reset. Grey points are outliers
+that HDBSCAN did not assign to any cluster. <a href="maps/dna_cluster.html" target="_blank" rel="noopener">Open full screen</a>.</p>
+<p>Clusters were consistent across random runs. Across 5 runs with different random seeds, the map gave 6-6 clusters (mean agreement 0.99, lowest 0.98; Adjusted Rand Index).</p>
+<div class="table-wrap" style="max-width:640px"><table><thead><tr><th>Cluster</th><th class='num'>Genomes</th></tr></thead>
+<tbody><tr><td>Cluster 0</td><td class='num'>564</td></tr><tr><td>Cluster 1</td><td class='num'>330</td></tr><tr><td>Cluster 2</td><td class='num'>283</td></tr><tr><td>Cluster 3</td><td class='num'>502</td></tr><tr><td>Cluster 4</td><td class='num'>791</td></tr><tr><td>Cluster 5</td><td class='num'>2,019</td></tr><tr><td>Outliers</td><td class='num'>255</td></tr></tbody></table></div>
+
+<h2 id="functional">Functional map (eggNOG gene families)</h2>
+<p>Here genomes are placed by what their genes do. Each genome is described by the relative abundance of
+7,584 eggNOG gene families (each family's share of the genome's genes), and genomes with similar
+profiles (Bray–Curtis dissimilarity) sit close together.</p>
+
+<div class="tabs" role="tablist" aria-label="Colour the map by" data-frame="frame-functional"><button role="tab" aria-selected="true" data-src="maps/functional_cluster.html">Colour by cluster</button><button role="tab" aria-selected="false" data-src="maps/functional_other.html">Colour by DNA-embedding cluster</button></div>
+<iframe class="map" id="frame-functional" src="maps/functional_cluster.html" title="Interactive functional map" loading="lazy"></iframe>
+<p class="small muted">Hover a point for its details. Click a legend entry to hide it; double-click to show only that
+entry (double-click again to show all). Drag to zoom; double-click the plot to reset. Grey points are outliers
+that HDBSCAN did not assign to any cluster. <a href="maps/functional_cluster.html" target="_blank" rel="noopener">Open full screen</a>.</p>
+<p>Clusters were mostly consistent across random runs; boundaries may shift slightly. Across 5 runs with different random seeds, the map gave 7-9 clusters (mean agreement 0.77, lowest 0.56; Adjusted Rand Index). Agreement between these functional clusters and the DNA-embedding clusters:
+Adjusted Rand Index 0.46 (1 = identical groupings, 0 = unrelated), computed on the
+88% of genomes that are in a cluster on both maps.</p>
+<h3 style="margin-top:28px">Top 10 COG gene families in each functional cluster</h3>
+<p class="note"><strong>How they are chosen.</strong> Enrichment is the mean relative abundance of a COG family in the
+cluster's genomes divided by its mean in all other clustered genomes of this view. Only families present in at least
+10% of the cluster's genomes are ranked, so one-off genes can't top the list.
+"In this cluster" is the share of the cluster's genomes carrying the family. The ranking is descriptive; no per-cluster
+test is applied. 322 outlier genomes are excluded. The top 50 per cluster are in
+<a href="data/functional_cluster_top_cog_terms.csv" download>functional_cluster_top_cog_terms.csv</a>.
+</p>
+
+<section class="panel cluster" id="cluster-0" aria-labelledby="h-cluster-0">
+  <picture>
+    <source srcset="img/functional_cluster_0_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_0_light.png" alt="Functional map with cluster 0 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-0">Cluster 0 · 327 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG1543</td><td>Belongs to the glycosyl hydrolase 57 family</td><td class='num'>74×</td><td class='num'>32%</td><td class='num'><1%</td></tr><tr><td class='id'>COG3330</td><td>Domain of unknown function (DUF4912)</td><td class='num'>73×</td><td class='num'>33%</td><td class='num'><1%</td></tr><tr><td class='id'>COG3360</td><td>Dodecin</td><td class='num'>58×</td><td class='num'>25%</td><td class='num'><1%</td></tr><tr><td class='id'>COG5663</td><td>Belongs to the 5&#x27;(3&#x27;)-deoxyribonucleotidase family</td><td class='num'>53×</td><td class='num'>54%</td><td class='num'>3%</td></tr><tr><td class='id'>COG4903</td><td>Competence transcription factor</td><td class='num'>41×</td><td class='num'>40%</td><td class='num'>2%</td></tr><tr><td class='id'>COG4043</td><td>ASCH</td><td class='num'>31×</td><td class='num'>33%</td><td class='num'>2%</td></tr><tr><td class='id'>COG1986</td><td title="Phosphatase that hydrolyzes non-canonical purine nucleotides such as XTP and ITP to their respective diphosphate derivatives. Probably excludes non-canonical purines from DNA precursor pool, thus preventing their incorporation into DNA and avoiding chromosomal lesions">Phosphatase that hydrolyzes non-canonical purine nucleotides such as XTP and ITP to their respective…</td><td class='num'>30×</td><td class='num'>29%</td><td class='num'>4%</td></tr><tr><td class='id'>COG4969</td><td>cell adhesion</td><td class='num'>26×</td><td class='num'>40%</td><td class='num'>11%</td></tr><tr><td class='id'>COG1379</td><td>DNA helicase</td><td class='num'>25×</td><td class='num'>33%</td><td class='num'>3%</td></tr><tr><td class='id'>COG4843</td><td>Uncharacterized protein conserved in bacteria (DUF2179)</td><td class='num'>21×</td><td class='num'>23%</td><td class='num'>4%</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="panel cluster" id="cluster-1" aria-labelledby="h-cluster-1">
+  <picture>
+    <source srcset="img/functional_cluster_1_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_1_light.png" alt="Functional map with cluster 1 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-1">Cluster 1 · 629 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG4646</td><td>Protein of unknown function (DUF2958)</td><td class='num'>78×</td><td class='num'>14%</td><td class='num'><1%</td></tr><tr><td class='id'>COG5265</td><td>ATP-binding cassette subfamily B</td><td class='num'>54×</td><td class='num'>84%</td><td class='num'>2%</td></tr><tr><td class='id'>COG2852</td><td>Protein of unknown function (DUF559)</td><td class='num'>45×</td><td class='num'>99%</td><td class='num'>11%</td></tr><tr><td class='id'>COG3883</td><td>PFAM NLP P60 protein</td><td class='num'>39×</td><td class='num'>96%</td><td class='num'>6%</td></tr><tr><td class='id'>COG5606</td><td>Helix-turn-helix domain</td><td class='num'>39×</td><td class='num'>34%</td><td class='num'>1%</td></tr><tr><td class='id'>COG2222</td><td>sugar isomerase, AgaS family</td><td class='num'>37×</td><td class='num'>98%</td><td class='num'>17%</td></tr><tr><td class='id'>COG3116</td><td>cell division</td><td class='num'>33×</td><td class='num'>96%</td><td class='num'>4%</td></tr><tr><td class='id'>COG3260</td><td>NADH ubiquinone oxidoreductase, 20</td><td class='num'>31×</td><td class='num'>88%</td><td class='num'>8%</td></tr><tr><td class='id'>COG3261</td><td>Respiratory-chain NADH dehydrogenase, 49 Kd subunit</td><td class='num'>30×</td><td class='num'>89%</td><td class='num'>10%</td></tr><tr><td class='id'>COG1848</td><td>PIN domain</td><td class='num'>26×</td><td class='num'>83%</td><td class='num'>6%</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="panel cluster" id="cluster-2" aria-labelledby="h-cluster-2">
+  <picture>
+    <source srcset="img/functional_cluster_2_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_2_light.png" alt="Functional map with cluster 2 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-2">Cluster 2 · 320 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG4520</td><td>Psort location CytoplasmicMembrane, score 9.46</td><td class='num'>133×</td><td class='num'>66%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4797</td><td>Motility related/secretion protein</td><td class='num'>55×</td><td class='num'>58%</td><td class='num'><1%</td></tr><tr><td class='id'>COG2335</td><td>Beta-Ig-H3 fasciclin</td><td class='num'>49×</td><td class='num'>38%</td><td class='num'>2%</td></tr><tr><td class='id'>COG3712</td><td>Domain of unknown function (DUF4974)</td><td class='num'>37×</td><td class='num'>81%</td><td class='num'>7%</td></tr><tr><td class='id'>COG1730</td><td>unfolded protein binding</td><td class='num'>21×</td><td class='num'>43%</td><td class='num'>2%</td></tr><tr><td class='id'>COG3489</td><td>Psort location CytoplasmicMembrane, score</td><td class='num'>18×</td><td class='num'>61%</td><td class='num'>3%</td></tr><tr><td class='id'>COG3488</td><td>Di-haem oxidoreductase, putative peroxidase</td><td class='num'>17×</td><td class='num'>71%</td><td class='num'>3%</td></tr><tr><td class='id'>COG3746</td><td>phosphate-selective porin O and P</td><td class='num'>15×</td><td class='num'>95%</td><td class='num'>7%</td></tr><tr><td class='id'>COG3401</td><td>cell wall organization</td><td class='num'>15×</td><td class='num'>31%</td><td class='num'>2%</td></tr><tr><td class='id'>COG4121</td><td>Psort location Cytoplasmic, score</td><td class='num'>15×</td><td class='num'>47%</td><td class='num'>2%</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="panel cluster" id="cluster-3" aria-labelledby="h-cluster-3">
+  <picture>
+    <source srcset="img/functional_cluster_3_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_3_light.png" alt="Functional map with cluster 3 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-3">Cluster 3 · 301 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG1747</td><td>Gliding motility protein</td><td class='num'>103×</td><td class='num'>52%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4068</td><td>Uncharacterized protein containing a Zn-ribbon (DUF2116)</td><td class='num'>65×</td><td class='num'>13%</td><td class='num'><1%</td></tr><tr><td class='id'>COG3823</td><td>Glutamine cyclotransferase</td><td class='num'>32×</td><td class='num'>33%</td><td class='num'>1%</td></tr><tr><td class='id'>COG0478</td><td>Lipopolysaccharide kinase (Kdo/WaaP) family</td><td class='num'>28×</td><td class='num'>19%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4360</td><td>Domain of unknown function (DUF4922)</td><td class='num'>25×</td><td class='num'>30%</td><td class='num'>2%</td></tr><tr><td class='id'>COG0023</td><td>Translation initiation factor SUI1</td><td class='num'>19×</td><td class='num'>89%</td><td class='num'>8%</td></tr><tr><td class='id'>COG3876</td><td>Protein of unknown function (DUF1343)</td><td class='num'>18×</td><td class='num'>76%</td><td class='num'>8%</td></tr><tr><td class='id'>COG1899</td><td>peptidyl-lysine modification to peptidyl-hypusine</td><td class='num'>17×</td><td class='num'>15%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4704</td><td>Fibrobacter succinogenes major domain (Fib_succ_major)</td><td class='num'>17×</td><td class='num'>95%</td><td class='num'>8%</td></tr><tr><td class='id'>COG5107</td><td>Domain of Unknown Function (DUF349)</td><td class='num'>16×</td><td class='num'>89%</td><td class='num'>7%</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="panel cluster" id="cluster-4" aria-labelledby="h-cluster-4">
+  <picture>
+    <source srcset="img/functional_cluster_4_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_4_light.png" alt="Functional map with cluster 4 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-4">Cluster 4 · 365 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG4814</td><td>Alpha/beta hydrolase of unknown function (DUF915)</td><td class='num'>439×</td><td class='num'>43%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4473</td><td>ABC transporter</td><td class='num'>306×</td><td class='num'>68%</td><td class='num'><1%</td></tr><tr><td class='id'>COG5503</td><td>Belongs to the UPF0356 family</td><td class='num'>305×</td><td class='num'>61%</td><td class='num'>0%</td></tr><tr><td class='id'>COG4476</td><td>Belongs to the UPF0223 family</td><td class='num'>299×</td><td class='num'>63%</td><td class='num'>0%</td></tr><tr><td class='id'>COG5506</td><td>Protein of unknown function (DUF1694)</td><td class='num'>290×</td><td class='num'>55%</td><td class='num'>0%</td></tr><tr><td class='id'>COG5353</td><td>Protein conserved in bacteria</td><td class='num'>271×</td><td class='num'>59%</td><td class='num'>0%</td></tr><tr><td class='id'>COG4483</td><td>Bacterial protein of unknown function (DUF910)</td><td class='num'>264×</td><td class='num'>56%</td><td class='num'>0%</td></tr><tr><td class='id'>COG4471</td><td>Uncharacterized protein conserved in bacteria (DUF2129)</td><td class='num'>260×</td><td class='num'>68%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4479</td><td>Belongs to the UPF0346 family</td><td class='num'>256×</td><td class='num'>56%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4858</td><td>Protein of unknown function (DUF1129)</td><td class='num'>222×</td><td class='num'>61%</td><td class='num'><1%</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="panel cluster" id="cluster-5" aria-labelledby="h-cluster-5">
+  <picture>
+    <source srcset="img/functional_cluster_5_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_5_light.png" alt="Functional map with cluster 5 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-5">Cluster 5 · 375 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG5282</td><td>hydrolase</td><td class='num'>187×</td><td class='num'>32%</td><td class='num'><1%</td></tr><tr><td class='id'>COG1507</td><td>Septum formation initiator family protein</td><td class='num'>173×</td><td class='num'>32%</td><td class='num'><1%</td></tr><tr><td class='id'>COG3429</td><td>Glucose-6-P dehydrogenase subunit</td><td class='num'>144×</td><td class='num'>24%</td><td class='num'>0%</td></tr><tr><td class='id'>COG0638</td><td title="Catalyzes the covalent attachment of the prokaryotic ubiquitin-like protein modifier Pup to the proteasomal substrate proteins, thereby targeting them for proteasomal degradation. This tagging system is termed pupylation. The ligation reaction involves the side-chain carboxylate of the C-terminal glutamate of Pup and the side-chain amino group of a substrate lysine">Catalyzes the covalent attachment of the prokaryotic ubiquitin-like protein modifier Pup to the proteasomal…</td><td class='num'>134×</td><td class='num'>30%</td><td class='num'><1%</td></tr><tr><td class='id'>COG1938</td><td>PAC2 family</td><td class='num'>94×</td><td class='num'>21%</td><td class='num'><1%</td></tr><tr><td class='id'>COG5468</td><td>Lipopolysaccharide-assembly</td><td class='num'>94×</td><td class='num'>13%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4765</td><td>protein conserved in bacteria</td><td class='num'>83×</td><td class='num'>13%</td><td class='num'><1%</td></tr><tr><td class='id'>COG3750</td><td>Uncharacterized protein conserved in bacteria (DUF2312)</td><td class='num'>82×</td><td class='num'>13%</td><td class='num'><1%</td></tr><tr><td class='id'>COG3820</td><td>protein conserved in bacteria</td><td class='num'>78×</td><td class='num'>12%</td><td class='num'><1%</td></tr><tr><td class='id'>COG3281</td><td>Trehalose synthase</td><td class='num'>78×</td><td class='num'>15%</td><td class='num'><1%</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="panel cluster" id="cluster-6" aria-labelledby="h-cluster-6">
+  <picture>
+    <source srcset="img/functional_cluster_6_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_6_light.png" alt="Functional map with cluster 6 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-6">Cluster 6 · 349 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG3539</td><td>Fimbrial protein</td><td class='num'>1,881×</td><td class='num'>44%</td><td class='num'><1%</td></tr><tr><td class='id'>COG4566</td><td>helix_turn_helix, Lux Regulon</td><td class='num'>783×</td><td class='num'>55%</td><td class='num'><1%</td></tr><tr><td class='id'>COG2916</td><td>Belongs to the histone-like protein H-NS family</td><td class='num'>362×</td><td class='num'>66%</td><td class='num'>0%</td></tr><tr><td class='id'>COG3113</td><td>STAS domain</td><td class='num'>319×</td><td class='num'>78%</td><td class='num'>0%</td></tr><tr><td class='id'>COG2969</td><td>Stringent starvation protein B</td><td class='num'>313×</td><td class='num'>79%</td><td class='num'>0%</td></tr><tr><td class='id'>COG2917</td><td>probably involved in intracellular septation</td><td class='num'>309×</td><td class='num'>79%</td><td class='num'>0%</td></tr><tr><td class='id'>COG2924</td><td title="Could be a mediator in iron transactions between iron acquisition and iron-requiring processes, such as synthesis and or repair of Fe-S clusters in biosynthetic enzymes">Could be a mediator in iron transactions between iron acquisition and iron-requiring processes, such as…</td><td class='num'>290×</td><td class='num'>75%</td><td class='num'>0%</td></tr><tr><td class='id'>COG2901</td><td>Activates ribosomal RNA transcription. Plays a direct role in upstream activation of rRNA promoters</td><td class='num'>289×</td><td class='num'>74%</td><td class='num'>0%</td></tr><tr><td class='id'>COG2863</td><td>Cytochrome c</td><td class='num'>286×</td><td class='num'>51%</td><td class='num'><1%</td></tr><tr><td class='id'>COG2980</td><td title="Together with LptD, is involved in the assembly of lipopolysaccharide (LPS) at the surface of the outer membrane. Required for the proper assembly of LptD. Binds LPS and may serve as the LPS recognition site at the outer membrane">Together with LptD, is involved in the assembly of lipopolysaccharide (LPS) at the surface of the outer…</td><td class='num'>285×</td><td class='num'>81%</td><td class='num'><1%</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="panel cluster" id="cluster-7" aria-labelledby="h-cluster-7">
+  <picture>
+    <source srcset="img/functional_cluster_7_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_7_light.png" alt="Functional map with cluster 7 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-7">Cluster 7 · 483 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG4636</td><td>Putative restriction endonuclease</td><td class='num'>19×</td><td class='num'>46%</td><td class='num'>3%</td></tr><tr><td class='id'>COG1655</td><td>Uncharacterized protein conserved in bacteria (DUF2225)</td><td class='num'>14×</td><td class='num'>26%</td><td class='num'>2%</td></tr><tr><td class='id'>COG3044</td><td>Psort location Cytoplasmic, score 8.87</td><td class='num'>12×</td><td class='num'>66%</td><td class='num'>4%</td></tr><tr><td class='id'>COG4805</td><td>protein conserved in bacteria</td><td class='num'>11×</td><td class='num'>90%</td><td class='num'>5%</td></tr><tr><td class='id'>COG3359</td><td>Predicted 3&#x27;-5&#x27; exonuclease related to the exonuclease domain of PolB</td><td class='num'>11×</td><td class='num'>75%</td><td class='num'>5%</td></tr><tr><td class='id'>COG4717</td><td>Psort location Cytoplasmic, score 8.87</td><td class='num'>10×</td><td class='num'>63%</td><td class='num'>5%</td></tr><tr><td class='id'>COG1406</td><td>Hemerythrin HHE cation binding domain</td><td class='num'>10×</td><td class='num'>24%</td><td class='num'>3%</td></tr><tr><td class='id'>COG2602</td><td>Psort location CytoplasmicMembrane, score</td><td class='num'>10×</td><td class='num'>40%</td><td class='num'>3%</td></tr><tr><td class='id'>COG1728</td><td>Protein of unknown function (DUF327)</td><td class='num'>9×</td><td class='num'>27%</td><td class='num'>3%</td></tr><tr><td class='id'>COG2703</td><td>Psort location Cytoplasmic, score 8.87</td><td class='num'>9×</td><td class='num'>61%</td><td class='num'>4%</td></tr></tbody></table></div>
+  </div>
+</section>
+<section class="panel cluster" id="cluster-8" aria-labelledby="h-cluster-8">
+  <picture>
+    <source srcset="img/functional_cluster_8_dark.png" media="(prefers-color-scheme: dark)">
+    <img src="img/functional_cluster_8_light.png" alt="Functional map with cluster 8 highlighted" loading="lazy">
+  </picture>
+  <div>
+    <h3 id="h-cluster-8">Cluster 8 · 1,273 genomes</h3>
+    
+    <div class="table-wrap" style="margin-top:12px"><table>
+      <thead><tr><th>COG</th><th>Description</th><th class="num">Enrichment</th><th class="num">In this<br>cluster</th><th class="num">In other<br>clusters</th></tr></thead>
+      <tbody><tr><td class='id'>COG1308</td><td>Domain of unknown function (DUF4342)</td><td class='num'>22×</td><td class='num'>17%</td><td class='num'><1%</td></tr><tr><td class='id'>COG5019</td><td>ATPase. Has a role at an early stage in the morphogenesis of the spore coat</td><td class='num'>17×</td><td class='num'>31%</td><td class='num'>2%</td></tr><tr><td class='id'>COG0070</td><td>PFAM glutamate synthase alpha subunit domain protein</td><td class='num'>13×</td><td class='num'>29%</td><td class='num'>3%</td></tr><tr><td class='id'>COG3411</td><td>Ferredoxin</td><td class='num'>12×</td><td class='num'>44%</td><td class='num'>8%</td></tr><tr><td class='id'>COG4813</td><td>Trehalose utilisation</td><td class='num'>11×</td><td class='num'>20%</td><td class='num'>3%</td></tr><tr><td class='id'>COG2313</td><td title="Catalyzes the reversible cleavage of pseudouridine 5&#x27;- phosphate (PsiMP) to ribose 5-phosphate and uracil. Functions biologically in the cleavage direction, as part of a pseudouridine degradation pathway">Catalyzes the reversible cleavage of pseudouridine 5&#x27;- phosphate (PsiMP) to ribose 5-phosphate and uracil.…</td><td class='num'>10×</td><td class='num'>27%</td><td class='num'>3%</td></tr><tr><td class='id'>COG0857</td><td>DHHA2</td><td class='num'>10×</td><td class='num'>37%</td><td class='num'>4%</td></tr><tr><td class='id'>COG4333</td><td>Protein of unknown function (DUF1643)</td><td class='num'>9×</td><td class='num'>18%</td><td class='num'>2%</td></tr><tr><td class='id'>COG2000</td><td>Putative Fe-S cluster</td><td class='num'>9×</td><td class='num'>32%</td><td class='num'>6%</td></tr><tr><td class='id'>COG1618</td><td>NTPase</td><td class='num'>8×</td><td class='num'>14%</td><td class='num'>3%</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.tabs').forEach(group => group.querySelectorAll('button').forEach(b =>
+  b.addEventListener('click', () => {
+    group.querySelectorAll('button').forEach(x => x.setAttribute('aria-selected', x === b));
+    document.getElementById(group.dataset.frame).src = b.dataset.src;
+  })));
+</script>
+
+</div></main>
+<footer><div class="wrap">Early prototype · generated 23 September 2026</div></footer>
+<script src="../../assets/selector.js"></script>
+</body>
+</html>
