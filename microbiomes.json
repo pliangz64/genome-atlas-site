@@ -24,7 +24,8 @@
       "catalogue": "Wolfe Lab urinary bacterial isolate genomes (UMB)",
       "citation": "Du J, et al. Cataloging the phylogenetic diversity of human bladder bacterial isolates. Genome Biol 25:75 (2024). doi:10.1186/s13059-024-03216-8",
       "embeddings": "C:/Users/phill/Desktop/Dong Lab/Interactive UMAP and Website Github/urinary_genome_embeddings.csv",
-      "color_slot": 3
+      "color_slot": 3,
+      "standalone": false
     }
   ]
 }

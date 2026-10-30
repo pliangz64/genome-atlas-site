@@ -33,9 +33,10 @@ def load_config():
 
 def views(cfg):
     """Every single microbiome, then every pair, in config order.
+    Microbiomes with "standalone": false (too few genomes to cluster on their own) get no single view.
     Each view: {'id', 'title', 'members': [microbiome dicts]}."""
     ms = cfg["microbiomes"]
-    out = [{"id": m["id"], "title": m["name"], "members": [m]} for m in ms]
+    out = [{"id": m["id"], "title": m["name"], "members": [m]} for m in ms if m.get("standalone", True)]
     out += [{"id": f"{a['id']}--{b['id']}", "title": f"{a['name']} vs {b['name']}", "members": [a, b]}
             for a, b in itertools.combinations(ms, 2)]
     return out

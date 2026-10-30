@@ -42,6 +42,8 @@ Outliers (genomes HDBSCAN did not assign to a cluster) are labelled "Outliers" o
    }
    ```
    `color_slot` (1–8) fixes the microbiome's colour across the whole site. Use the next unused slot.
+
+   For a collection too small to cluster on its own (for example the 65 urinary genomes), add `"standalone": false`. It then appears only in comparisons: no single-microbiome view is built, and the selector won't let visitors show it alone.
 4. **Rebuild:** existing views don't change, so compute only the new ones, then rebuild the pages:
    ```bash
    python analysis.py oral gut--oral vaginal--oral

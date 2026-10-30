@@ -23,6 +23,7 @@
 <p>The site offers every microbiome on its own and every pair of microbiomes. Each view is computed separately, so a
 single microbiome's clusters reflect its own structure, and map positions and cluster numbers are not comparable
 between views.</p>
+<p>Urinary is shown only in comparisons. With so few genomes, UMAP + HDBSCAN on that microbiome alone left most genomes as outliers and gave clusters that changed between random runs, so a single-microbiome view would not be meaningful.</p>
 <h2>Gene families and relative abundance</h2>
 <p>Genes were annotated with eggNOG-mapper and assigned to their root-level eggNOG orthologous group (OG). The relative
 abundance of an OG in a genome is the number of its genes in that OG divided by the genome's total annotated genes,

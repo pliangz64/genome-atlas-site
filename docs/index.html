@@ -19,16 +19,16 @@
 by DNA sequence (DNABERT-S embeddings) and one by gene content (relative abundance of eggNOG gene families), each with its
 own clusters. Pick one microbiome to explore it on its own, or two to compare them.</p>
 <div class="selector">
-<form class="pick" data-order='["gut", "vaginal", "urinary"]' data-root="">
+<form class="pick" data-order='["gut", "vaginal", "urinary"]' data-compare-only="{&quot;urinary&quot;: &quot;Urinary&quot;}" data-root="">
   <span class="label">Microbiomes</span><label class="chip"><input type="checkbox" value="gut"><span class="swatch" style="background:var(--m-gut)"></span>Gut</label><label class="chip"><input type="checkbox" value="vaginal"><span class="swatch" style="background:var(--m-vaginal)"></span>Vaginal</label><label class="chip"><input type="checkbox" value="urinary"><span class="swatch" style="background:var(--m-urinary)"></span>Urinary</label>
   <button type="submit">Show</button>
   <span class="hint"></span>
 </form></div>
 <h2>Microbiomes</h2>
-<div class="cards"><a class="card" href="views/gut/index.html"><h3><span class="swatch" style="background:var(--m-gut)"></span>Gut</h3><span class="small muted">4,744 genomes · UHGG v2.0.2 species-representative genomes</span></a><a class="card" href="views/vaginal/index.html"><h3><span class="swatch" style="background:var(--m-vaginal)"></span>Vaginal</h3><span class="small muted">786 genomes · VMGC species-level genome bins</span></a><a class="card" href="views/urinary/index.html"><h3><span class="swatch" style="background:var(--m-urinary)"></span>Urinary</h3><span class="small muted">65 genomes · Wolfe Lab urinary bacterial isolate genomes (UMB)</span></a></div>
+<div class="cards"><a class="card" href="views/gut/index.html"><h3><span class="swatch" style="background:var(--m-gut)"></span>Gut</h3><span class="small muted">4,744 genomes · UHGG v2.0.2 species-representative genomes</span></a><a class="card" href="views/vaginal/index.html"><h3><span class="swatch" style="background:var(--m-vaginal)"></span>Vaginal</h3><span class="small muted">786 genomes · VMGC species-level genome bins</span></a><div class="card"><h3><span class="swatch" style="background:var(--m-urinary)"></span>Urinary</h3><span class="small muted">65 genomes · Wolfe Lab urinary bacterial isolate genomes (UMB)<br>Comparisons only: too few genomes to cluster on their own.</span></div></div>
 <h2>Comparisons</h2>
 <div class="cards"><a class="card" href="views/gut--vaginal/index.html"><h3>Gut vs Vaginal</h3><span class="small muted">5,530 genomes · DNA and functional maps, differences</span></a><a class="card" href="views/gut--urinary/index.html"><h3>Gut vs Urinary</h3><span class="small muted">4,809 genomes · DNA and functional maps, differences</span></a><a class="card" href="views/vaginal--urinary/index.html"><h3>Vaginal vs Urinary</h3><span class="small muted">851 genomes · DNA and functional maps, differences</span></a></div>
-<p class="small muted" style="margin-top:20px">3 microbiomes · 6 views. More microbiomes will be
+<p class="small muted" style="margin-top:20px">3 microbiomes · 5 views. More microbiomes will be
 added over time.</p>
 
 </div></main>

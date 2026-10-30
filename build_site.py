@@ -125,14 +125,17 @@ footer { border-top: 1px solid var(--border); padding: 20px 0 32px; color: var(-
 SELECTOR_JS = """
 document.querySelectorAll('form.pick').forEach(form => {
   const order = JSON.parse(form.dataset.order);
+  const compareOnly = JSON.parse(form.dataset.compareOnly);   // id -> name, no single-microbiome view
   const root = form.dataset.root;
   const boxes = [...form.querySelectorAll('input[type=checkbox]')];
   const btn = form.querySelector('button');
   const hint = form.querySelector('.hint');
   let picked = boxes.filter(b => b.checked).map(b => b.value);
   function update() {
-    btn.disabled = picked.length === 0;
+    const alone = picked.length === 1 && picked[0] in compareOnly;
+    btn.disabled = picked.length === 0 || alone;
     hint.textContent = picked.length === 0 ? 'Pick one microbiome to explore, or two to compare.'
+      : alone ? compareOnly[picked[0]] + ' has too few genomes to cluster on its own. Add a second microbiome to compare.'
       : picked.length === 1 ? 'Add a second microbiome to compare, or show this one alone.' : '';
   }
   boxes.forEach(b => b.addEventListener('change', () => {
@@ -227,8 +230,9 @@ def selector(cfg, root, selected=()):
         f'<label class="chip"><input type="checkbox" value="{m["id"]}"{" checked" if m["id"] in selected else ""}>'
         f'{sw(m)}{esc(m["name"])}</label>' for m in cfg["microbiomes"])
     order = json.dumps([m["id"] for m in cfg["microbiomes"]])
+    compare_only = esc(json.dumps({m["id"]: m["name"] for m in cfg["microbiomes"] if not m.get("standalone", True)}))
     return f"""<div class="selector">
-<form class="pick" data-order='{order}' data-root="{root}">
+<form class="pick" data-order='{order}' data-compare-only="{compare_only}" data-root="{root}">
   <span class="label">Microbiomes</span>{chips}
   <button type="submit">Show</button>
   <span class="hint"></span>
@@ -524,11 +528,18 @@ def build_view(cfg, view, vd):
 def build_home(cfg, all_views, data):
     ms = cfg["microbiomes"]
     cards = []
-    for m in ms:
-        g = data[m["id"]]["genomes"]
-        cards.append(f'<a class="card" href="views/{m["id"]}/index.html"><h3>{sw(m)}{esc(m["name"])}</h3>'
-                     f'<span class="small muted">{len(g):,} genomes · {esc(m["catalogue"])}</span></a>')
     pairs = [v for v in all_views if len(v["members"]) == 2]
+    for m in ms:
+        if m.get("standalone", True):
+            n = len(data[m["id"]]["genomes"])
+            cards.append(f'<a class="card" href="views/{m["id"]}/index.html"><h3>{sw(m)}{esc(m["name"])}</h3>'
+                         f'<span class="small muted">{n:,} genomes · {esc(m["catalogue"])}</span></a>')
+        else:   # no single view: count its genomes in any comparison it is part of
+            g = next(data[v["id"]]["genomes"] for v in pairs if m in v["members"])
+            n = int((g["Microbiome"] == m["name"]).sum())
+            cards.append(f'<div class="card"><h3>{sw(m)}{esc(m["name"])}</h3>'
+                         f'<span class="small muted">{n:,} genomes · {esc(m["catalogue"])}<br>Comparisons only: too few '
+                         f'genomes to cluster on their own.</span></div>')
     pair_cards = "".join(
         f'<a class="card" href="views/{v["id"]}/index.html"><h3>{esc(v["title"])}</h3>'
         f'<span class="small muted">{len(data[v["id"]]["genomes"]):,} genomes · DNA and functional maps, differences</span></a>'
@@ -549,6 +560,15 @@ added over time.</p>
     page(SITE / "index.html", "Home", body, "", current="index.html")
 
 
+def compare_only_note(cfg):
+    names = [m["name"] for m in cfg["microbiomes"] if not m.get("standalone", True)]
+    if not names:
+        return ""
+    return (f"\n<p>{esc(' and '.join(names))} {'is' if len(names) == 1 else 'are'} shown only in comparisons. With so "
+            "few genomes, UMAP + HDBSCAN on that microbiome alone left most genomes as outliers and gave clusters that "
+            "changed between random runs, so a single-microbiome view would not be meaningful.</p>")
+
+
 def build_methods(cfg, any_settings):
     rows = "".join(f"<tr><td>{sw(m)}{esc(m['name'])}</td><td>{esc(m['catalogue'])}</td><td>{esc(m['citation'])}</td></tr>"
                    for m in cfg["microbiomes"])
@@ -562,7 +582,7 @@ def build_methods(cfg, any_settings):
 <h2>Views</h2>
 <p>The site offers every microbiome on its own and every pair of microbiomes. Each view is computed separately, so a
 single microbiome's clusters reflect its own structure, and map positions and cluster numbers are not comparable
-between views.</p>
+between views.</p>{compare_only_note(cfg)}
 <h2>Gene families and relative abundance</h2>
 <p>Genes were annotated with eggNOG-mapper and assigned to their root-level eggNOG orthologous group (OG). The relative
 abundance of an OG in a genome is the number of its genes in that OG divided by the genome's total annotated genes,

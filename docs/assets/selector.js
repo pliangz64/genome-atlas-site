@@ -1,13 +1,16 @@
 document.querySelectorAll('form.pick').forEach(form => {
   const order = JSON.parse(form.dataset.order);
+  const compareOnly = JSON.parse(form.dataset.compareOnly);   // id -> name, no single-microbiome view
   const root = form.dataset.root;
   const boxes = [...form.querySelectorAll('input[type=checkbox]')];
   const btn = form.querySelector('button');
   const hint = form.querySelector('.hint');
   let picked = boxes.filter(b => b.checked).map(b => b.value);
   function update() {
-    btn.disabled = picked.length === 0;
+    const alone = picked.length === 1 && picked[0] in compareOnly;
+    btn.disabled = picked.length === 0 || alone;
     hint.textContent = picked.length === 0 ? 'Pick one microbiome to explore, or two to compare.'
+      : alone ? compareOnly[picked[0]] + ' has too few genomes to cluster on its own. Add a second microbiome to compare.'
       : picked.length === 1 ? 'Add a second microbiome to compare, or show this one alone.' : '';
   }
   boxes.forEach(b => b.addEventListener('change', () => {
