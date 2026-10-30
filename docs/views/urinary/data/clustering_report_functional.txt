@@ -1,0 +1,14 @@
+65 genomes
+  Urinary: 100.0%
+Main result (seed 42): 2 clusters, 9.2% outliers
+Stability: Clusters were mostly consistent across random runs; boundaries may shift slightly.
+  5 runs gave 2-3 clusters; agreement (Adjusted Rand Index, genomes clustered in both runs) mean 0.85, lowest 0.62
+  On average 64% of genomes were clustered in both runs of a pair.
+  Verdict cutoffs (0.9 / 0.75) are rule-of-thumb guides chosen for this tool.
+
+Genomes per cluster:
+Dataset   Urinary
+Cluster          
+Outliers        6
+0              19
+1              40

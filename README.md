@@ -2,7 +2,7 @@
 
 Source for a static website that compares bacterial genomes from different human microbiomes by their DNABERT-S DNA embeddings and eggNOG gene-family content.
 
-> **Status: early prototype.** Currently includes gut (UHGG) and vaginal (VMGC) genomes.
+> **Status: early prototype.** Currently includes gut (UHGG), vaginal (VMGC) and urinary (Wolfe Lab UMB isolates) genomes.
 
 Visitors pick **one microbiome** to explore it on its own, or **two** to compare them. Every microbiome and every pair of microbiomes gets its own precomputed view. Each view shows the genomes on two maps, each clustered separately with UMAP + HDBSCAN:
 

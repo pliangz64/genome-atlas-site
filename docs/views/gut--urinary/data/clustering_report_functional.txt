@@ -1,0 +1,20 @@
+4809 genomes
+  Gut: 98.6%
+  Urinary: 1.4% (minority, drawn on top)
+Main result (seed 42): 7 clusters, 7.9% outliers
+Stability: Clusters were mostly consistent across random runs; boundaries may shift slightly.
+  5 runs gave 7-9 clusters; agreement (Adjusted Rand Index, genomes clustered in both runs) mean 0.85, lowest 0.73
+  On average 81% of genomes were clustered in both runs of a pair.
+  Verdict cutoffs (0.9 / 0.75) are rule-of-thumb guides chosen for this tool.
+
+Genomes per cluster:
+Dataset    Gut  Urinary
+Cluster                
+Outliers   378        0
+0          629        0
+1          555        0
+2          776       26
+3          315       38
+4          332        0
+5          564        0
+6         1195        1

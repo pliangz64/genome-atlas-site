@@ -17,6 +17,14 @@
       "citation": "Huang L, et al. A multi-kingdom collection of 33,804 reference genomes for the human vaginal microbiome. Nat Microbiol 9:2185-2200 (2024). doi:10.1038/s41564-024-01751-5",
       "embeddings": "C:/Users/phill/Desktop/Dong Lab/Interactive UMAP and Website Github/vmgc_genome_embeddings.csv",
       "color_slot": 2
+    },
+    {
+      "id": "urinary",
+      "name": "Urinary",
+      "catalogue": "Wolfe Lab urinary bacterial isolate genomes (UMB)",
+      "citation": "Du J, et al. Cataloging the phylogenetic diversity of human bladder bacterial isolates. Genome Biol 25:75 (2024). doi:10.1186/s13059-024-03216-8",
+      "embeddings": "C:/Users/phill/Desktop/Dong Lab/Interactive UMAP and Website Github/urinary_genome_embeddings.csv",
+      "color_slot": 3
     }
   ]
 }

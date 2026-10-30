@@ -4,7 +4,7 @@
   --ink: #0b0b0b; --ink-2: #52514e; --muted: #6b6a66;
   --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
   --neutral: #b9b8b1; --accent: #2a78d6;
-  --m-gut: #2a78d6; --m-vaginal: #eb6834;
+  --m-gut: #2a78d6; --m-vaginal: #eb6834; --m-urinary: #1baf7a;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -13,7 +13,7 @@
     --ink: #ffffff; --ink-2: #c3c2b7; --muted: #9a9892;
     --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
     --neutral: #55544f; --accent: #6da7ec;
-    --m-gut: #3987e5; --m-vaginal: #d95926;
+    --m-gut: #3987e5; --m-vaginal: #d95926; --m-urinary: #199e70;
   }
 }
 :root[data-theme="dark"] {
@@ -22,7 +22,7 @@
   --ink: #ffffff; --ink-2: #c3c2b7; --muted: #9a9892;
   --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
   --neutral: #55544f; --accent: #6da7ec;
-  --m-gut: #3987e5; --m-vaginal: #d95926;
+  --m-gut: #3987e5; --m-vaginal: #d95926; --m-urinary: #199e70;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--page); color: var(--ink);

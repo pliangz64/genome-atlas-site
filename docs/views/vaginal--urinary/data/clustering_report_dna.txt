@@ -1,0 +1,21 @@
+851 genomes
+  Vaginal: 92.4%
+  Urinary: 7.6% (minority, drawn on top)
+Main result (seed 42): 8 clusters, 8.5% outliers
+Stability: Clusters varied between random runs; treat cluster assignments with caution.
+  5 runs gave 3-8 clusters; agreement (Adjusted Rand Index, genomes clustered in both runs) mean 0.55, lowest 0.25
+  On average 89% of genomes were clustered in both runs of a pair.
+  Verdict cutoffs (0.9 / 0.75) are rule-of-thumb guides chosen for this tool.
+
+Genomes per cluster:
+Dataset   Vaginal  Urinary
+Cluster                   
+Outliers       72        0
+0             149       10
+1              42        2
+2              44        0
+3              25       36
+4              65        0
+5             117        3
+6             145       13
+7             127        1
